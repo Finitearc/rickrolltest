@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>System Audio Test</title>
+    <script>
+        function rickRoll() {
+            let audio = new Audio("https://www.myinstants.com/media/sounds/rickroll.mp3");
+            audio.volume = 1.0; // Set max volume
+
+            // Attempt to play the sound
+            audio.play().then(() => {
+                console.log("Audio played successfully!");
+            }).catch(error => {
+                console.log("Autoplay blocked:", error);
+            });
+
+            // Vibrate phone (if supported)
+            if (navigator.vibrate) {
+                navigator.vibrate([500, 200, 500]); // Short vibration pattern
+            }
+
+            // Redirect after 5 seconds
+            setTimeout(function() {
+                window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+            }, 5000);
+        }
+    </script>
+
+    <style>
+        /* Fake system alert styles */
+        #alertBox {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        
+        #alertBox h2 {
+            color: red;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        #alertBox p {
+            font-size: 16px;
+            color: black;
+        }
+
+        #confirmButton {
+            background: #007AFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        #confirmButton:active {
+            background: #005BBB;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="alertBox">
+        <h2>🔊 System Audio Verification Required</h2>
+        <p>⚠️ Your sound output has been disabled.</p>
+        <p>To continue using this device, increase your volume and confirm below.</p>
+        <button id="confirmButton" onclick="rickRoll()">Confirm</button>
+    </div>
+</body>
+</html>
